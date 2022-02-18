@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기 수정</title>
+</head>
+<body>
+    <h1>글쓰기 수정</h1>
+    <form method="POST">
+        {% csrf_token %}
+        제목<br>
+        <input type="text" name="postname" value="{{post.postname}}"><br>
+        내용<br>
+        <textarea rows="10" cols="50" name="contents">{{post.contents}}</textarea><br>
+
+        {% if post.mainphoto %}
+<!--        <input type="file" name="mainphoto" value="media/{{post.mainphoto.url}}"><br>-->
+            <img src = "{{ post.mainphoto.url }}" alt="" height="600">
+            <br>
+        {% endif %}
+        <input type="submit" value="수정">
+        <button type="button" onclick="history.back();">취소</button>
+    </form>
+</body>
+</html>
